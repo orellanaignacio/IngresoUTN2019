@@ -18,55 +18,51 @@ function CalcularPrecio() {
     cantidad = parseInt(document.getElementById("Cantidad").value);
     precio = cantidad * 35;
     marca = document.getElementById("Marca").value;
-    iibb =0;
+    iibb = 0;
     preciofinal = 0;
     descuento = 0
-    if (cantidad <= 6) {
+    if (cantidad >= 6) {
         descuento = precio * 50 / 100;
         preciofinal = precio - descuento;
     }
-    else if (cantidad == 5) {
-        if (marca == "ArgentinaLuz") {
-            descuento = precio * 40 / 100;
-            precioFinal = precio - descuento;
-        }
-        else {
-            descuento = precio * 30 / 100;
-            precioFinal = precio - descuento;
-        }
+    else if (cantidad == 5 && marca == "ArgentinaLuz") {
+        descuento = precio * 40 / 100;
+        precioFinal = precio - descuento;
     }
-    else if (cantidad == 4) {
-        if (marca == "ArgentinaLuz") {
-            descuento = precio * 25 / 100;
-            preciofinal = precio - descuento;
-        }
-        else {
-            descuento = precio * 20 / 100;
-            preciofinal = precio - descuento;
-        }
+    else {
+        descuento = precio * 30 / 100;
+        precioFinal = precio - descuento;
     }
-    else if (cantidad == 3) {
-        if (marca == "ArgentinaLuz") {
-            descuento = precio * 15 / 100;
-            preciofinal = precio - descuento;
-        }
-        else if (marca == "FelipeLamparas") {
-            descuento = precio * 10 / 100;
-            preciofinal = precio - descuento;
-        }
-        else {
-            descuento = precio * 5 / 100;
-            preciofinal = precio - descuento;
-        }
+    if (cantidad == 4 && marca == "ArgentinaLuz" || marca == "FelipeLamparas") {
+        descuento = precio * 25 / 100;
+        preciofinal = precio - descuento;
     }
-    else if(preciofinal>120){
-        iibb=preciofinal*10/100;
-        preciofinal+=iibb;
-        alert("IIBB Usted pago $ "+ iibb )
+    else {
+        descuento = precio * 20 / 100;
+        preciofinal = precio - descuento;
     }
+    if (cantidad == 3 && marca == "ArgentinaLuz") {
+        descuento = precio * 15 / 100;
+        preciofinal = precio - descuento;
 
-
-document.getElementById("precioDescuento").value = preciofinal;
-
-
+    }
+    else if (marca == "FelipeLamparas") {
+        descuento = precio * 10 / 100;
+        preciofinal = precio - descuento;
+    }
+    else {
+        descuento = precio * 5 / 100;
+        preciofinal = precio - descuento;
+    }
+    if (preciofinal > 120) {
+        iibb = preciofinal * 10 / 100;
+        alert("IIBB Usted pago $ " + iibb)
+    }
+    document.getElementById("precioDescuento").value = preciofinal;
 }
+
+
+
+
+
+
